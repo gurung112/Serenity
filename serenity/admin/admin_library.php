@@ -13,14 +13,24 @@ if (isset($_POST['search'])) {
     $search = trim($_POST['search']);
 }
 
-// SQL query to fetch books along with their category, author, and status
-$sql = "SELECT br.request_id, b.book_id, b.title, b.year, b.status, c.c_name AS category, a.a_name AS author
-        FROM book_requests br
-        JOIN books b ON br.book_id = b.book_id
-        INNER JOIN categories c ON b.category_id = c.c_id
-        LEFT JOIN author a ON a.a_id = br.a_id
-        WHERE b.title LIKE '%$search%'";  // Searching by book title
-$result = $mysqli->query($sql);  // Execute the query and store the result
+    $sql = "SELECT br.request_id, b.book_id, b.title, b.year, b.status, c.c_name AS category, a.a_name AS author
+            FROM books b
+            LEFT JOIN book_requests br ON br.book_id = b.book_id
+            LEFT JOIN categories c ON b.category_id = c.c_id
+            LEFT JOIN author a ON a.a_id = br.a_id
+            WHERE b.title LIKE '%$search%'";
+
+
+// Debugging the SQL query
+ // To make sure the query is formed correctly
+
+
+// Check if the query is executed properly
+if (!$result = $mysqli->query($sql)) {
+    die('Error executing query: ' . $mysqli->error);
+}
+
+
 
 ?>
 
@@ -29,14 +39,16 @@ $result = $mysqli->query($sql);  // Execute the query and store the result
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library Management - PEACE</title>
+    <title>Serenity</title>
+    <link rel="icon" type="image/jpg" href="../images/logo.jpg">
     <link rel="stylesheet" href="abc.css">
     <link rel="stylesheet" href="categories.css">
+    <link rel="stylesheet" href="scrolling.css">
     <link rel="shortcut icon" href="image/abc.jpg" type="image/x-icon">
 </head>
 <body>
     <div class="heading">
-        <h1>PEACE</h1>
+        <img src="../images/logo.jpg" style="width: 150px; height: 90px; border-radius: 10%;">
         <a href="logout.php">Logout</a>
     </div>
     <div class="navbar">
@@ -44,7 +56,6 @@ $result = $mysqli->query($sql);  // Execute the query and store the result
         <a href="admin_library.php">Library</a>
         <a href="admin_categories.php">Categories</a>
         <a href="admin_author.php">Author</a>
-        <a href="admin_bookrequest.php">Book Requests</a>
         <a href="admin_usermanagement.php">User Management</a>
     </div>
     <div class="content">
@@ -54,7 +65,7 @@ $result = $mysqli->query($sql);  // Execute the query and store the result
         <form method="POST" action="admin_library.php">
             <input type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" placeholder="Search Books">
             <button type="submit">Search</button>
-            <a href="add_book.php" class="add-book-btn">Add Book</a>
+            <a href="add_book.php" class="add-category-btn">Add Book</a>
         </form>
 
         <!-- Book Table -->
@@ -63,10 +74,8 @@ $result = $mysqli->query($sql);  // Execute the query and store the result
                 <tr>
                     <th>S.N</th>
                     <th>Book Title</th>
-                   
                     <th>Year</th>
                     <th>Category</th>
-                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -77,10 +86,8 @@ $result = $mysqli->query($sql);  // Execute the query and store the result
                         <tr>
                             <td><?php echo $sn++; ?></td>
                             <td><?php echo htmlspecialchars($row['title']); ?></td>
-                            
                             <td><?php echo htmlspecialchars($row['year']); ?></td>
                             <td><?php echo htmlspecialchars($row['category']); ?></td>
-                            <td><?php echo htmlspecialchars($row['status']); ?></td>
                             <td>
                                 <!-- Action Links for Edit and Delete -->
                                 <a class="edit-btn" href="edit_book.php?id=<?php echo $row['book_id']; ?>">Edit</a> | 

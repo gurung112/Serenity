@@ -39,14 +39,15 @@ $mysqli->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Registration</title>
-    <link rel="stylesheet" href="css/login.css">
+    <title>Serenity</title>
+    <link rel="icon" type="image/jpg" href="../images/logo.jpg">
+    <link rel="stylesheet" href="css/a.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/input.css">
 </head>
 <body>
 <div class="navbar">
-    <h1>Library Management System</h1>
+    <img src="../images/logo.jpg" style="width: 150px; height: 90px; border-radius: 10%;">
     <a href="../home.html">Home</a>
     <a href="user_login.php">User Login</a>
     <a href="user_signup.php">User SignUp</a>

@@ -3,19 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library Management System</title>
+    <title>Serenity</title>
+    <link rel="icon" type="image/jpg" href="images/logo.jpg">
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 </head>
 <body>
+
+    <!-- Navbar -->
     <div class="navbar">
-        <h1>Library Management System</h1>
+        
+        <img src="images/logo.jpg" style="width: 150px; height: 90px; border-radius: 10%;">
         <a href="home.html">Home</a>
         <a href="user/user_login.php">User Login</a>
         <a href="user/user_signup.php">User SignUp</a>
         <a href="admin/admin_index.php">Admin Login</a>
     </div>
-    <div class="page">
-        <p>Welcome to the Library Management System!</p>
+
+    <!-- Swiper Carousel Section -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">x 
+                <img src="images/book1.jpg" alt="New Arrivals">
+                <div class="overlay">New Arrivals</div>
+            </div>
+            <div class="swiper-slide">
+                <img src="images/book1.jpg" alt="Popular Books">
+                <div class="overlay">Popular Books</div>
+            </div>
+            <div class="swiper-slide">
+                <img src="images/book1.jpg" alt="Library Events">
+                <div class="overlay">Library Events</div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
     </div>
+
+    <!-- Book Images Section -->
+    <div class="books-section">
+        <h2>Featured Books</h2>
+        <div class="book-container">
+            <div class="book">
+                <img src="images/book.jpg" alt="The Great Gatsby">
+                <h3>The Great Gatsby</h3>
+                <p>F. Scott Fitzgerald</p>
+            </div>
+            <div class="book">
+                <img src="images/book1.jpg" alt="To Kill a Mockingbird">
+                <h3>To Kill a Mockingbird</h3>
+                <p>Harper Lee</p>
+            </div>
+            <div class="book">
+                <img src="images/book2.jpg" alt="1984">
+                <h3>1984</h3>
+                <p>George Orwell</p>
+            </div>
+            <div class="book">
+                <img src="images/book3.jpg" alt="Pride and Prejudice">
+                <h3>Pride and Prejudice</h3>
+                <p>Jane Austen</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Section -->
+    <div class="feedback-section">
+        <h2>What Our Readers Say</h2>
+        <div class="feedback-container">
+            <div class="feedback">
+                <p>"Great collection of books! The library is very well organized.Elbert is an unincorporated town, a post office, and a census-designated place (CDP) located in and governed by Elbert County, Colorado, United States. The CDP is a part of the Denver–Aurora–Lakewood"</p>
+                <p>- John Doe</p>
+            </div>
+            <div class="feedback">
+                <p>"I love the new arrivals section. It has some amazing titles!There are no cafes in Elbert, but the grassy prairies and wide expanses of blue skies make this town a great picnic spot.
+
+                   
+                    
+        The closest recreational facility is Castlewood Canyon State Park, which is a popular spot for hiking, technical rock climbing and birdwatching."</p>
+                <p>- Jane Smith</p>
+            </div>
+            <div class="feedback">
+                <p>"Easy to navigate and find books. Really helpful!There are no cafes in Elbert, but the grassy prairies and wide expanses of blue skies make this town a great picnic spot.
+
+                    Exploring this area's history is fascinating, and the  revolver-wielding evil man who died on the way to his trial in Denver, or the 1935 Memorial Day flood in which half the town washed away. It is easy to take a step back in time in this quiet, unassuming town. Head outside of town to view old wagon ruts dating back to 1865 left along the Smoky Hill Trail.
+                    
+                    The closest recreational facility is Castlewood Canyon State Park, which is a popular spot for hiking, technical rock climbing and birdwatching."</p>
+                <p>- Mark Johnson</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper
+        var swiper = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 3000,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    </script>
 </body>
 </html>

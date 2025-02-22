@@ -44,26 +44,77 @@ body, html {
     color: #f0a500; /* Highlight color on hover */
 }
 
-/* Content styling */
-.page {
-    margin-top: 80px; /* Pushes the content below the fixed navbar */
-    padding: 20px;
-    font-size: 18px;
+
+
+.swiper-container {
+    width: 100%;
+    height: 400px;
+    margin-top: 0px;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .navbar a {
-        margin: 5px 0;
-    }
+.swiper-slide {
+    position: relative;
 }
 
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
+.overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    font-size: 20px;
+}
 
+/* Book Images Section */
+.books-section {
+    padding: 50px 20px;
+    text-align: center;
+}
 
+.books-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
 
+.book-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.book {
+    background-color:grey;
+    margin: 15px;
+    padding: 15px;
+    width: 220px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.book h3 {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.book p {
+    color:red;
+    font-size: 16px;
+}
+
+.swiper-wrapper,.books-section  img{
+    width:500px;
+    height: 150px;
+}

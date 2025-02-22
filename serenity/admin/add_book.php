@@ -20,31 +20,51 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $year = $_POST['year'];
     $category_id = $_POST['category_id'];
     $description = trim($_POST['description']);
-    $book_url = trim($_POST['book_url']);  // New field for book URL
+    $book_url = trim($_POST['book_url']);
     $image = $_FILES['image'];
 
-    // Handle image upload and set path to 'admin/uploads/'
+    // Ensure the 'admin/images/' directory exists
+    $target_dir = "../admin/uploads/"; // Correct folder for storage
+    if (!file_exists($target_dir)) {
+        mkdir($target_dir, 0755, true); // Creates directory if missing
+    }
+
+    // Handle image upload
     $image_path = null;
     if (!empty($image['name'])) {
-        $target_dir = __DIR__ . "/admin/uploads/";  // Save in admin/uploads folder
-        if (!file_exists($target_dir)) {
-            mkdir($target_dir, 0755, true);  // Create directory if not exists
+        $image_name = time() . "_" . basename($image['name']); // Unique filename
+        $image_path = $target_dir . $image_name;
+
+        if (!move_uploaded_file($image['tmp_name'], $image_path)) {
+            $error_message = "Error uploading the image.";
         }
-        $image_path = "admin/uploads/" . basename($image['name']);
-        move_uploaded_file($image['tmp_name'], $target_dir . basename($image['name']));
     }
 
     // Validate required fields
     if (!empty($title) && !empty($author_id) && !empty($year) && !empty($category_id) && !empty($description)) {
         $sql = "INSERT INTO books (title, year, category_id, status, description, b_image, book_url) 
-        VALUES (?, ?, ?, 'Available', ?, ?, ?)";
+                VALUES (?, ?, ?, 'Available', ?, ?, ?)";
         $stmt = $mysqli->prepare($sql);
         $stmt->bind_param('siisss', $title, $year, $category_id, $description, $image_path, $book_url);
 
-
         if ($stmt->execute()) {
-            header('Location: admin_library.php');
-            exit;
+            $book_id = $stmt->insert_id; // Get the last inserted book ID
+
+            // Insert request into book_requests table
+            $user_id = $_SESSION['user_id']; // Get logged-in user ID
+            $request_date = date('Y-m-d H:i:s'); // Current timestamp
+
+            $request_sql = "INSERT INTO book_requests (user_id, book_id, a_id, status, request_date) 
+                            VALUES (?, ?, ?, 'Pending', ?)";
+            $request_stmt = $mysqli->prepare($request_sql);
+            $request_stmt->bind_param('iiis', $user_id, $book_id, $author_id, $request_date);
+            
+            if ($request_stmt->execute()) {
+                header('Location: admin_library.php');
+                exit;
+            } else {
+                $error_message = "Error adding book request.";
+            }
         } else {
             $error_message = "Error adding book. Please try again.";
         }
@@ -59,13 +79,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Book</title>
+    <title>Serenity</title>
+    <link rel="icon" type="image/jpg" href="../images/logo.jpg">
     <link rel="stylesheet" href="abc.css">
     <link rel="stylesheet" href="addcategory.css">
+    <link rel="stylesheet" href="scrolling.css">
 </head>
 <body>
     <div class="heading">
-        <h1>PEACE</h1>
+        <img src="../images/logo.jpg" style="width: 150px; height: 90px; border-radius: 10%;">
         <a href="logout.php">Logout</a>
     </div>
     <div class="navbar">
@@ -73,7 +95,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <a href="admin_library.php">Library</a>
         <a href="admin_categories.php">Categories</a>
         <a href="admin_author.php">Author</a>
-        <a href="admin_bookrequest.php">Book Requests</a>
         <a href="admin_usermanagement.php">User Management</a>
     </div>
     <div class="content">
@@ -106,7 +127,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <?php endwhile; ?>
             </select>
             
-            <!-- New Book URL Field -->
             <label for="book_url">Book URL:</label>
             <input type="url" name="book_url" id="book_url" placeholder="Enter book URL" required>
             

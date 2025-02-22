@@ -12,13 +12,14 @@ if (!isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Home</title>
+    <title>Serenity</title>
+    <link rel="icon" type="image/jpg" href="../images/logo.jpg">
     <link rel="stylesheet" href="css/user_home.css"> 
     <link rel="stylesheet" href="css/style.css"> 
 </head>
 <body>
     <div class="navbar">
-        <h1>Library Management System</h1>
+        <img src="../images/logo.jpg" style="width: 150px; height: 90px; border-radius: 10%;">
         <a href="user_home.php">Home</a>
         <a href="user_books.php">Books</a>
         <a href="user_profile.php">Profile</a>
@@ -38,17 +39,17 @@ if (!isset($_SESSION['user_id'])) {
             <div class="books-list">
                 <!-- Example Featured Books -->
                 <div class="book-item">
-                    <img src="images/book1.jpg" alt="Book 1">
+                    <img src="../images/book1.jpg" alt="Book 1">
                     <h3>Book Title 1</h3>
-                    <p>Author: John Doe</p>
+                    <p>Author:  Mary Shelly</p>
                 </div>
                 <div class="book-item">
-                    <img src="images/book2.jpg" alt="Book 2">
+                    <img src="../images/book2.jpg" alt="Book 2">
                     <h3>Book Title 2</h3>
                     <p>Author: Jane Smith</p>
                 </div>
                 <div class="book-item">
-                    <img src="images/book3.jpg" alt="Book 3">
+                    <img src="../images/book3.jpg" alt="Book 3">
                     <h3>Book Title 3</h3>
                     <p>Author: Mark Johnson</p>
                 </div>

@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, rgba(169, 190, 235, 0.7), rgba(153, 163, 140, 0.7)),
+                url('../images/slide3.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login{
+    background: linear-gradient(to right, #e8ecf5, #a2bbb5);
+}
+
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #6c63ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #476e8f;
+}

@@ -11,15 +11,16 @@ if (isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel Login</title>
+    <title>Serenity</title>
+    <link rel="icon" type="image/jpg" href="../images/logo.jpg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="home.css"> 
     <link rel="stylesheet" href="xyz.css"> 
-    
+    <link rel="stylesheet" href="a.css">
 </head>
 <body>
     <div class="navbar">
-            <h1>Library Management System</h1>
+            <img src="../images/logo.jpg" style="width: 150px; height: 90px; border-radius: 10%;">
             <a href="../home.html">Home</a>
             <a href="../user/user_login.php">User Login</a>
             <a href="../user/user_signup.php">User SignUp</a>

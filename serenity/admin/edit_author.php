@@ -59,13 +59,66 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Author</title>
+    <title>Serenity</title>
+    <link rel="icon" type="image/jpg" href="../images/logo.jpg">
     <link rel="stylesheet" href="abc.css">
-    <link rel="stylesheet" href="edit_author.css"> <!-- You can create a separate CSS for this page -->
+    <link rel="stylesheet" href="edit_author.css"> 
+    <style>
+        .content_e {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+    </style>
 </head>
 <body>
     <div class="heading">
-        <h1>PEACE</h1>
+        <img src="../images/logo.jpg" style="width: 150px; height: 90px; border-radius: 10%;">
         <a href="logout.php">Logout</a>
     </div>
     <div class="navbar">
@@ -73,7 +126,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <a href="admin_library.php">Library</a>
         <a href="admin_categories.php">Categories</a>
         <a href="admin_author.php">Author</a>
-        <a href="admin_bookrequest.php">Book Requests</a>
         <a href="admin_usermanagement.php">User Management</a>
     </div>
     <div class="content">

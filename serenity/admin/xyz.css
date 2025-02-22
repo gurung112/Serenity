@@ -1,7 +1,7 @@
 button {
     width: 100%;
     padding: 15px;
-    background-color: #4CAF50;
+    background-color: #6c63ff;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -10,5 +10,5 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #443da3;
 }

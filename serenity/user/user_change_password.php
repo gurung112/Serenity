@@ -65,14 +65,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Change Password</title>
+    <title>Serenity</title>
+    <link rel="icon" type="image/jpg" href="../images/logo.jpg">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/user_home.css"> 
     <link rel="stylesheet" href="css/input.css"> 
 </head>
 <body>
     <div class="navbar">
-        <h1>Library Management System</h1>
+        <img src="../images/logo.jpg" style="width: 150px; height: 90px; border-radius: 10%;">
         <a href="user_home.php">Home</a>
         <a href="user_books.php">Books</a>
         <a href="user_profile.php">Profile</a>

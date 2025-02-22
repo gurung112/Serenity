@@ -35,7 +35,9 @@ $total_users = $total_users_data['user_count'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PEACE Dashboard</title>
+    <title>Serenity</title>
+    <link rel="icon" type="image/jpg" href="../images/logo.jpg">
+    <link rel="icon" type="image/jpg" href="../images/logo.jpg">
     <link rel="stylesheet" href="abc.css">
     <link rel="stylesheet" href="content.css">
     <link rel="stylesheet" href="navbar.css">
@@ -97,7 +99,7 @@ $total_users = $total_users_data['user_count'];
 </head>
 <body>
     <div class="heading">
-        <h1>PEACE</h1>
+        <img src="../images/logo.jpg" style="width: 150px; height: 90px; border-radius: 10%;">
         <a href="logout.php"><b>Logout</b></a>
     </div>
     <div class="navbar">
@@ -105,7 +107,6 @@ $total_users = $total_users_data['user_count'];
         <a href="admin_library.php">Library</a>
         <a href="admin_categories.php">Categories</a>
         <a href="admin_author.php">Author</a>
-        <a href="admin_bookrequest.php">Book Requests</a>
         <a href="admin_usermanagement.php">User Management</a>
     </div>
     <div class="content">
